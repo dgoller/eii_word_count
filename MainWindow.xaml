@@ -1,0 +1,21 @@
+﻿<Window x:Class="WordCounter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WordCounter"
+        mc:Ignorable="d"
+        Title="Word Counter" Height="245" Width="400"
+        ResizeMode="NoResize" MinHeight="245" MinWidth="400">
+    <Grid Margin="0,0,0,1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="155*"/>
+            <ColumnDefinition Width="237*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="fileName" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" Grid.ColumnSpan="2" Height="18" IsReadOnly="True"/>
+        <Button Grid.Column="1" Content="Browse..." HorizontalAlignment="Left" Margin="168,8,0,0" VerticalAlignment="Top" Height="20" Width="55" Click="btnFileOpen_Click"/>
+        <TextBox Name="fileText" HorizontalAlignment="Left" Margin="10,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="365" Grid.ColumnSpan="2" Height="132" IsReadOnly="True"/>
+        <ComboBox Name="wordList" SelectedIndex="0" ItemsSource="{Binding WordCountList, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Word" SelectedValuePath="Count" IsEnabled="false" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top" Width="130" Height="22"/>
+        <TextBox Name="wordCount"  Text="{Binding ElementName=wordList, Path=SelectedItem.Count}" HorizontalAlignment="Left" Margin="0,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Grid.Column="1" IsReadOnly="True"/>
+    </Grid>
+</Window>
